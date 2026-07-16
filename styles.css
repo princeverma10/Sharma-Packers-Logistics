@@ -1,0 +1,198 @@
+/* CSS Document - Sharma's Packers & Logistics Custom Stylesheet Overrides */
+
+/* System Custom Properties */
+:root {
+    --shadow-level1: 0px 4px 20px rgba(11, 79, 138, 0.05);
+    --shadow-level2: 0px 10px 30px rgba(11, 79, 138, 0.12);
+    --shadow-overlay: 0px 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Scroll Smoothness & Layout Adjustments */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header Scrolled state height & shadow transitions */
+header.scrolled {
+    height: 70px !important;
+    box-shadow: var(--shadow-level2) !important;
+}
+
+header.scrolled .header-container {
+    height: 70px !important;
+}
+
+/* Navigation link hover indicators */
+.nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F57C00; /* Orange */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #0B4F8A !important; /* Blue */
+}
+
+/* Mobile Slide-out Menu Overlay and Drawer */
+.mobile-menu-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* Scroll Fade-in Animation Classes */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gallery filtering transitions */
+.gallery-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    position: absolute;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* FAQ Accordion Height Animation */
+.faq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.active .faq-body {
+    max-height: 500px;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-btn {
+    color: #F57C00 !important; /* Orange text on active item */
+}
+
+/* Floating Actions Back to Top Visibility */
+#back-to-top {
+    transform: scale(0);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#back-to-top.show {
+    transform: scale(1);
+}
+
+/* Success Modal Overlay */
+#success-modal-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#success-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#success-modal-overlay.active #success-modal {
+    transform: scale(1);
+}
+
+#success-modal {
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Local Shifting search result hide utility */
+.city-card.hidden {
+    display: none !important;
+}
+
+/* Hero bg zoom animation keyframe */
+@keyframes zoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.animate-zoom {
+    animation: zoom 8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Mobile border adjustment for stats section */
+@media (max-width: 767px) {
+    #trust-stats .grid > div {
+        border-right: none !important;
+        border-bottom: 1px solid #F1F5F9;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    #trust-stats .grid > div:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
